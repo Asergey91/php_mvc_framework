@@ -3,9 +3,9 @@ class Router{
     private $controller='DefaultController';
     private $action='page';
     function __construct(){
-        if(isset($__GET['controller'])&&isset($__GET['action'])){
-            $this->controller=$__GET['controller'];
-            $this->action=$__GET['controller'];
+        if(isset($_GET['controller']) && isset($_GET['action'])){
+            $this->controller=$_GET['controller'];
+            $this->action=$_GET['action'];
         }
         $this->load_controller();
     }
