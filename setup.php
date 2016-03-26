@@ -3,12 +3,14 @@
 foreach (glob("framework/*.php") as $filename){
     require $filename;
 }
-//LOAD CONTROLLER FILES
-foreach (glob("controllers/*.php") as $filename){
-    require $filename;
-}
+//LOAD SCHEMA MIGRATION
+require 'db/schema.php';
 //INITIALIZE DB CLASS
 $db=new Db();
+$db->drop();
+echo 'APP TABLES DROPPED'.PHP_EOL;
+$db->create();
+echo 'APP TABLES CREATED'.PHP_EOL;
 $db=$db->db;
 //LOAD MODELS
 foreach (glob("models/*.php") as $filename){
@@ -18,5 +20,6 @@ foreach (glob("models/*.php") as $filename){
     $temp= ucfirst($temp[1]);
     $$temp=new $temp();
 }
-//INITIALIZE ROUTER
-new Router();
+//LOAD DB SETUP FILES
+require 'db/seed.php';
+echo 'APP TABLES SEEDED'.PHP_EOL;

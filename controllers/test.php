@@ -1,6 +1,15 @@
 <?php
-class TestController{
-    public function test (){
-        echo 'This is the "test" action in "TestController"';
+class Test01Controller{
+    public function create (){
+        echo 'This is the "create" action in "TestController"';
+    }
+    public function read (){
+        
+    }
+    public function update (){
+        
+    }
+    public function delete (){
+        
     }
 }
