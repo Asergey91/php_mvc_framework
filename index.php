@@ -10,12 +10,12 @@ foreach (glob("controllers/*.php") as $filename){
 //INITIALIZE DB CLASS
 $db=new Db();
 $db=$db->db;
-//LOAD MODELS
+//LOAD MODEL FILES
 foreach (glob("models/*.php") as $filename){
     require $filename;
     //CREATE MODEL INSTANCES
     preg_match('/^.+\/(.+)\.php$/', $filename, $temp);
-    $temp= ucfirst($temp[1]);
+    $temp=ucfirst($temp[1]);
     $$temp=new $temp();
 }
 //INITIALIZE ROUTER

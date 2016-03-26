@@ -11,6 +11,7 @@ $db->drop();
 echo 'APP TABLES DROPPED'.PHP_EOL;
 $db->create();
 echo 'APP TABLES CREATED'.PHP_EOL;
+//CHANGE DB VAR FOR OTHER CLASSES
 $db=$db->db;
 //LOAD MODELS
 foreach (glob("models/*.php") as $filename){
