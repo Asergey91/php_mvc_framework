@@ -2,7 +2,7 @@
 class Schema{
     //this array represents the schema of your app with the key being the table name and the value being the rows
     public static $tables=[
-        'Test'=>[
+        'Test1'=>[
             'field1 VARCHAR(30)',
             'field2 INT(6)',
             'field3 TEXT'
@@ -10,7 +10,8 @@ class Schema{
         'Test2'=>[
             'field1 VARCHAR(30)',
             'field2 INT(6)',
-            'field3 TEXT'
+            'field3 TEXT',
+            'test1_id INT(6) UNSIGNED'
         ],
     ];
 }

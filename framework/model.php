@@ -1,10 +1,15 @@
 <?php
 class Model{
-    
     private $table;
-    
+    //get table name from child class name
     function __construct(){
         $this->table=get_called_class();
+    }
+    //get all records
+    public function all(){
+        $query='SELECT * FROM '.$this->table;
+        $res=Database::query($query);
+        return $res;
     }
     //find a record by id
     public function find($id){
@@ -28,4 +33,57 @@ class Model{
         //do the actual query
         Database::query($query);
     }
+    //update a record using an id and associative array [column=>value]
+    public function update($id, $params){
+        foreach($params as $column=>$value){
+            $query='UPDATE '.$this->table.' SET '.$column.'='.$value.' WHERE id='.$id.';';
+            Database::query($query);
+        }
+    }
+    //update a record using an id and associative array [column, value]
+    public function where($params){
+        $query='SELECT * FROM '.$this->table.' WHERE '.$params[0].'='.$params[1].';';
+        $res=Database::query($query);
+        return $res;
+    }
+    //find a record by id
+    public function delete($id){
+        $query='DELETE FROM '.$this->table.' WHERE id='.$id.';';
+        Database::query($query);
+    }
+}
+class ModelFactory{
+    private static $model_names=[];
+    //initialize a single model classes and store it in a global variable of the same name
+    public static function load($model){
+        self::get_names();
+        foreach(self::$model_names as $model_name){
+            if($model!=$model_name){
+                echo 'Unable to load model with the name '.$model;
+                return false;
+            }
+        }
+        M::$a[$model]=new $model;
+    }
+    //initialize all model classes and store them in a global variable of the same name
+    public static function load_all(){
+        self::get_names();
+        foreach(self::$model_names as $model){
+            M::$a[$model]=new $model;
+        }
+    }
+    //get all model names and store them in an array
+    private static function get_names(){
+        $counter=0;
+        foreach (glob("models/*.php") as $filename){
+            preg_match('/^.+\/(.+)\.php$/', $filename, $name);
+            $name=$name[1];
+            self::$model_names[$counter]=$name;
+            $counter++;
+        }
+    }
+}
+//all model instances are stored here
+class M{
+    public static $a=[];
 }
