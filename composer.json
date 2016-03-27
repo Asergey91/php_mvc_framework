@@ -1,0 +1,6 @@
+{
+    "require": {
+        "fzaninotto/faker": "^1.5",
+        "respect/validation": "^1.0"
+    }
+}

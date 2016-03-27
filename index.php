@@ -1,22 +1,11 @@
 <?php
-//LOAD FRAMEWORK FILES
 foreach (glob("framework/*.php") as $filename){
-    require $filename;
+    include $filename;
 }
-//LOAD CONTROLLER FILES
-foreach (glob("controllers/*.php") as $filename){
-    require $filename;
+foreach (glob("db/*.php") as $filename){
+    include $filename;
 }
-//INITIALIZE DB CLASS
-$db=new Db();
-$db=$db->db;
-//LOAD MODEL FILES
-foreach (glob("models/*.php") as $filename){
-    require $filename;
-    //CREATE MODEL INSTANCES
-    preg_match('/^.+\/(.+)\.php$/', $filename, $temp);
-    $temp=ucfirst($temp[1]);
-    $$temp=new $temp();
-}
-//INITIALIZE ROUTER
-new Router();
+Database::connect();
+Database::drop();
+Database::create();
+Database::seed();
