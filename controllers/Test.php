@@ -1,6 +1,14 @@
 <?php
-class Test extends Controller{
+
+namespace Controllers;
+
+class Test extends \Controller{
+    
     public function index(){
-        echo 'This is the "index" action in "Test" controller';
+        $all=\M::$a['Test1']->all();
+        foreach($all as $row){
+            echo var_dump($row);
+        }
     }
+    
 }

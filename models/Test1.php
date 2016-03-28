@@ -1,5 +1,8 @@
 <?php
-class Test1 extends Model{
+
+namespace Models;
+
+class Test1 extends \Model{
     function __construct(){
          parent::__construct();
     }

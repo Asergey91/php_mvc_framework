@@ -3,7 +3,9 @@ class Model{
     private $table;
     //get table name from child class name
     function __construct(){
-        $this->table=get_called_class();
+        $name=get_called_class();
+        preg_match('/Models\\\\(.+)/', $name, $name);
+        $this->table=$name[1];
     }
     //get all records
     public function all(){
@@ -63,13 +65,15 @@ class ModelFactory{
                 return false;
             }
         }
-        M::$a[$model]=new $model;
+        $model_namespaced='\\Models\\'.$model;
+        M::$a[$model]=new $model_namespaced;
     }
     //initialize all model classes and store them in a global variable of the same name
     public static function load_all(){
         self::get_names();
         foreach(self::$model_names as $model){
-            M::$a[$model]=new $model;
+            $model_namespaced='\\Models\\'.$model;
+            M::$a[$model]=new $model_namespaced;
         }
     }
     //get all model names and store them in an array

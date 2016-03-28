@@ -24,14 +24,15 @@ class ControllerFactory{
                 return false;
             }
         }
-        $actions=get_class_methods($controller);
+        $controller_namespaced='\\Controllers\\'.$controller;
+        $actions=get_class_methods($controller_namespaced);
         foreach($actions as $act){
             if($act!=$action){
                 echo 'Unable to load action with the name '.$action;
                 return false;
             }
         }
-        C::$a[$controller]=new $controller;
+        C::$a[$controller]=new $controller_namespaced;
         C::$a[$controller]->{$action}();
     }
 }

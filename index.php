@@ -1,6 +1,5 @@
 <?php
 require 'vendor/autoload.php';
-
 foreach (glob("framework/*.php") as $filename){
     require $filename;
 }
