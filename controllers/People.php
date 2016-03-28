@@ -11,7 +11,7 @@ class People extends \Controller{
     }
     //R in CRUD
     public function read(){
-        
+        //so data is accessible by view
         \D::$a['Data']=\M::$a['People']->all();
         
         require 'views/People/templates/header.php';
@@ -48,7 +48,7 @@ class People extends \Controller{
                 }
             }
         }
-        //redirect back
+        //redirect back to home
         \H::redirect(\Config::$base_url[\Config::$env]);
     }
     
@@ -75,9 +75,11 @@ class People extends \Controller{
         if(!v::stringType()->notEmpty()->validate($person['job_role'])){
             return false;
         }
-        //model validation to make sure it fufils the exercise requirement
-        if(!\M::$a['People']->validates($person)){
-            return false;
+        //model validation to make sure it fufils the exercise requirement on new submission
+        if(!array_key_exists('id', $person)){
+            if(!\M::$a['People']->validates($person)){
+                return false;
+            }
         }
         //if all validations pass return true
         return true;

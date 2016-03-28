@@ -1,7 +1,14 @@
 <?php
     $people=\D::$a['Data'];
 ?>
+<br><br>
+<center>
+<div class='row'>
+<div class="col-xs-12 col-md-6 col-md-offset-3">
+<div class='well'>
 <form action="?controller=People&action=submit" method="post">
+    <fieldset>
+    <legend>9xb Technical Test</legend>
     <table>
         <tr>
             <th>First name</th>
@@ -16,22 +23,31 @@
         echo'
         <tr>
             <input type="hidden" name="people['.$counter.'][id]" value="'.$person['id'].'" />
-            <td><input type="text" name="people['.$counter.'][first_name]" value="'.$person['first_name'].'" /></td>
-            <td><input type="text" name="people['.$counter.'][last_name]" value="'.$person['last_name'].'" /></td>
-            <td><input type="text" name="people['.$counter.'][email]" value="'.$person['email'].'" /></td>
-            <td><input type="text" name="people['.$counter.'][job_role]" value="'.$person['job_role'].'" /></td>
-            <td><input type="checkbox" name="people['.$counter.'][delete]" value="1" /></td>
+            <td><div class="form-group"><input type="text" name="people['.$counter.'][first_name]" value="'.$person['first_name'].'" class="form-control"/></div></td>
+            <td><div class="form-group"><input type="text" name="people['.$counter.'][last_name]" value="'.$person['last_name'].'" class="form-control"/></div></td>
+            <td><div class="form-group"><input type="text" name="people['.$counter.'][email]" value="'.$person['email'].'" class="form-control"/></div></td>
+            <td><div class="form-group"><input type="text" name="people['.$counter.'][job_role]" value="'.$person['job_role'].'" class="form-control"/></div></td>
+            <td><div class="form-group"><div class="checkbox"><label><input type="checkbox" name="people['.$counter.'][delete]" value="1"></label></div></div></td>
         </tr>
         ';
         $counter++;
         }
-        ?>
+        if($counter<10){
+        echo'
         <tr>
-            <td><input type="text" name="people[<?php echo $counter;?>][first_name]" placeholder="Add new..." /></td>
-            <td><input type="text" name="people[<?php echo $counter;?>][last_name]" placeholder="Add new..." /></td>
-            <td><input type="text" name="people[<?php echo $counter;?>][email]" placeholder="Add new..." /></td>
-            <td><input type="text" name="people[<?php echo $counter;?>][job_role]" placeholder="Add new..." /></td>
+            <td><div class="form-group"><input type="text" name="people['.$counter.'][first_name]" placeholder="Add new..." class="form-control"/></div></td>
+            <td><div class="form-group"><input type="text" name="people['.$counter.'][last_name]" placeholder="Add new..." class="form-control"/></div></td>
+            <td><div class="form-group"><input type="text" name="people['.$counter.'][email]" placeholder="Add new..." class="form-control"/></div></td>
+            <td><div class="form-group"><input type="text" name="people['.$counter.'][job_role]" placeholder="Add new..." class="form-control"/></div></td>
         </tr>
+        ';}
+        ?>
     </table>
-    <input type="submit" value="Submit!" />
+    <br><br>
+    <button type="submit" class="btn btn-primary btn-raised pull-right" />Submit!</button>
+    </fieldset>
 </form>
+</div>
+</div>
+</div>
+</center>

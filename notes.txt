@@ -1,0 +1,27 @@
+-Model/View/Controller (MVC) architecture
+Kinda got carried away with this one, ended up writing a simple mvc framework from scratch. Tried to make it similar in workflow to RoR.
+
+-Simplicity & readability
+Well as for my controller, model and view they should be pretty straight forward
+
+-Scalability
+In terms of development this should be pretty scalable, in terms of performance caching needs to be implemented
+
+-Performance
+Like mentioned above, I didn't have the time to implement caching. As for algorithms i tried to keep them as linear in complexity as I could
+
+-Normalisation in data storage
+Ids and timestamps are automatically created in my framework, schemas are easy to edit with the schema class
+
+-Security
+Inputs are escaped for SQL, and validated with respect/validator
+
+-How long the solution took to implement?
+3 days for the framework, about 4 hours for the actual tech test
+
+-Things Id implement if I had more time
+    propper routing
+    better error handling
+    much more and better helper methods
+    caching
+    made thing pretty
