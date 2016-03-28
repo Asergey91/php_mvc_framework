@@ -1,6 +1,6 @@
 <?php
 class Config{
-    //set this to what you want the root to resirect to
+    //set this to what you want the root to redirect to
     public static $default_controller='People';
     public static $default_action='read';
     //this var deveines the environment
