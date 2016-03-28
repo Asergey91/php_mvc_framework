@@ -38,7 +38,7 @@ class Model{
     //update a record using an id and associative array [column=>value]
     public function update($id, $params){
         foreach($params as $column=>$value){
-            $query='UPDATE '.$this->table.' SET '.$column.'='.$value.' WHERE id='.$id.';';
+            $query='UPDATE '.$this->table.' SET '.$column.'="'.$value.'" WHERE id='.$id.';';
             Database::query($query);
         }
     }

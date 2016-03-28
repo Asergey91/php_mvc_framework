@@ -27,13 +27,14 @@ class ControllerFactory{
         $controller_namespaced='\\Controllers\\'.$controller;
         $actions=get_class_methods($controller_namespaced);
         foreach($actions as $act){
-            if($act!=$action){
-                echo 'Unable to load action with the name '.$action;
-                return false;
+            if($act==$action){
+                C::$a[$controller]=new $controller_namespaced;
+                C::$a[$controller]->{$action}();
+                return true;
             }
         }
-        C::$a[$controller]=new $controller_namespaced;
-        C::$a[$controller]->{$action}();
+        echo 'Unable to load action with the name '.$action;
+        return false;
     }
 }
 //this class stores all the instances of controllers

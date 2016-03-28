@@ -1,8 +1,8 @@
 <?php
 class Config{
     //set this to what you want the root to resirect to
-    public static $default_controller='Test';
-    public static $default_action='index';
+    public static $default_controller='People';
+    public static $default_action='read';
     //this var deveines the environment
     public static $env='c9';
     //this array defines the based url in each environment

@@ -1,7 +1,7 @@
 <?php
 class Database{
     //database connection object
-    private static $db;
+    public static $db;
     //connects to the database
     public static function connect(){
         $debug=Config::$db[Config::$env];
